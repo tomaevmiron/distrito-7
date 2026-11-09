@@ -1,0 +1,275 @@
+/* Distrito 7 Tattoo · Blanes — negro, blanco y oro, como el logo */
+:root{
+  --bg:#050505; --panel:#0d0c0a; --line:#2b2416; --txt:#f4f0e7; --mute:#a9a292;
+  --gold:#dba520; --gold-hi:#fbe08a; --gold-lo:#8a5a12;
+  --oro:linear-gradient(120deg,#8a5a12 0%,#e3ad2a 28%,#fbe08a 50%,#d2921c 72%,#7d4f0f 100%);
+  --got:'Grenze Gotisch','UnifrakturCook',Georgia,serif;
+  --cap:'Cinzel','Trajan Pro',Georgia,serif;
+  --txtf:'Mulish',system-ui,sans-serif;
+  --wrap:1160px; --pad:clamp(18px,4.5vw,44px);
+  --corte:polygon(11px 0,calc(100% - 11px) 0,100% 11px,100% calc(100% - 11px),calc(100% - 11px) 100%,11px 100%,0 calc(100% - 11px),0 11px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font:400 17px/1.65 var(--txtf);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,figure,blockquote,table{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px}
+::selection{background:var(--gold);color:#000}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.oro{background:var(--oro);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cap{font:700 .74rem/1.3 var(--cap);letter-spacing:.24em;text-transform:uppercase}
+
+/* ---------- botones: placa con las esquinas cortadas ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.7em;padding:1.05em 1.7em;border:0;cursor:pointer;
+  font:700 .82rem/1 var(--cap);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:#140d02;
+  background:var(--oro);background-size:220% 100%;background-position:0 0;clip-path:var(--corte);
+  transition:background-position .6s ease,transform .2s ease}
+.btn:hover{background-position:100% 0}
+.btn:active{transform:translateY(2px)}
+.btn svg{width:1.3em;height:1.3em;flex:none}
+.btn--linea{color:var(--gold-hi);isolation:isolate}
+.btn--linea::before{content:"";position:absolute;inset:1px;z-index:-1;background:var(--bg);clip-path:var(--corte);transition:background .3s}
+.btn--linea:hover{color:#fff}
+.btn--linea:hover::before{background:#17120a}
+.btn--sm{padding:.85em 1.2em;font-size:.72rem}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ---------- medallón numerado (el círculo del 7) ---------- */
+.med{position:relative;display:grid;place-items:center;flex:none;width:var(--m,64px);aspect-ratio:1;border-radius:50%;
+  border:2px solid var(--gold);font:900 calc(var(--m,64px)*.5)/1 var(--got);color:#fff;font-style:normal}
+.med::before{content:"";position:absolute;inset:4px;border-radius:50%;border:2px dotted var(--gold-lo)}
+.med::after{content:"";position:absolute;inset:10px;border-radius:50%;border:1px solid var(--gold)}
+
+/* ---------- adorno: filete con la estrella de cuatro puntas ---------- */
+.filete{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);margin:18px auto 0;max-width:340px}
+.filete::before,.filete::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.filete::after{transform:scaleX(-1)}
+.filete svg{width:22px;height:22px;flex:none}
+
+/* ---------- cabecera ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:50;background:rgba(5,5,5,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:22px;height:70px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.marca .med{--m:42px}
+.marca b{font:900 1.7rem/1 var(--got);letter-spacing:.02em}
+.nav{display:flex;gap:26px}
+.nav a{font:700 .72rem/1 var(--cap);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--mute);padding:8px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.nav a:hover,.nav a[aria-current]{color:var(--gold-hi);border-color:var(--gold)}
+.menu{display:none;width:44px;height:44px;border:1px solid var(--line);background:none;cursor:pointer;padding:0;place-items:center}
+.menu i{display:block;width:20px;height:2px;background:var(--gold);box-shadow:0 6px 0 var(--gold),0 -6px 0 var(--gold)}
+
+/* ---------- secciones ---------- */
+section{position:relative;padding:clamp(72px,10vw,130px) 0}
+.cab{text-align:center;max-width:760px;margin:0 auto clamp(40px,6vw,70px)}
+.cab .cap{color:var(--gold)}
+.h2{font:900 clamp(2.5rem,6.4vw,4.6rem)/.95 var(--got);margin-top:12px;letter-spacing:.01em}
+.cab p.lead{margin-top:22px;color:var(--mute)}
+.lead{font-size:1.06rem;color:#d6d0c2;max-width:60ch}
+.alt{background:var(--panel);border-block:1px solid var(--line)}
+
+/* ---------- portada ---------- */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:96px 0 56px;overflow:hidden;
+  background:radial-gradient(60vmax 60vmax at var(--lx,50%) var(--ly,36%),rgba(219,165,32,.13),transparent 62%)}
+.hero .wrap{position:relative;display:flex;flex-direction:column;align-items:center;width:100%}
+.emblema{position:relative;width:min(450px,84vw,48svh);aspect-ratio:1;margin:-2% 0 -5%}
+.emblema img{position:relative;width:100%;height:100%;mix-blend-mode:screen}
+.halo{position:absolute;inset:-9%;width:118%;height:118%;color:var(--gold);opacity:.5}
+.halo g{transform-origin:300px 300px;animation:gira 140s linear infinite}
+.halo g+g{animation-duration:90s;animation-direction:reverse}
+@keyframes gira{to{transform:rotate(360deg)}}
+.hero h1{font:900 clamp(2.3rem,6.6vw,4.4rem)/.98 var(--got);max-width:15ch}
+.hero .lead{margin:16px auto 26px;max-width:52ch}
+.hero .btns{justify-content:center}
+.datos{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);color:var(--mute)}
+.datos li{display:flex;align-items:center;gap:10px;font:700 .72rem/1.3 var(--cap);letter-spacing:.16em;text-transform:uppercase}
+.datos a{text-decoration:none}
+.datos a:hover{color:var(--gold-hi)}
+.datos svg{width:15px;height:15px;color:var(--gold)}
+.luz{width:9px;height:9px;border-radius:50%;background:#6d675b}
+.abierto .luz{background:#63d26b;box-shadow:0 0 0 4px rgba(99,210,107,.18)}
+.cerrado .luz{background:#d2584a}
+
+/* portada de subpágina */
+.hero.sub{min-height:0;padding:150px 0 80px;text-align:left;place-items:stretch}
+.hero.sub .wrap{align-items:flex-start}
+.hero.sub::after{content:"7";position:absolute;right:-2vw;top:50%;transform:translateY(-46%);font:900 min(62vw,620px)/.8 var(--got);color:transparent;-webkit-text-stroke:1px var(--line);pointer-events:none;z-index:0}
+.hero.sub .wrap>*{position:relative;z-index:1}
+.volver{font:700 .72rem/1 var(--cap);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--mute)}
+.volver:hover{color:var(--gold-hi)}
+.titulo{display:flex;align-items:center;gap:22px;margin:34px 0 22px}
+.titulo .med{--m:clamp(64px,10vw,96px)}
+.hero.sub h1{max-width:none;font-size:clamp(2.8rem,8vw,5.6rem)}
+.hero.sub .lead{margin:0 0 30px}
+.hero.sub .btns{justify-content:flex-start}
+
+/* ---------- estilos: índice en filas ---------- */
+.filas{border-top:1px solid var(--line)}
+.fila{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(16px,3vw,34px);padding:clamp(20px,3vw,30px) clamp(4px,1.4vw,18px);
+  border-bottom:1px solid var(--line);text-decoration:none;transition:background .3s,padding .3s}
+.fila .med{--m:clamp(48px,6vw,66px);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.fila strong{display:block;font:900 clamp(1.9rem,4.6vw,3.3rem)/1 var(--got);transition:color .2s}
+.fila em{display:block;margin-top:6px;font-style:normal;color:var(--mute);font-size:.98rem;max-width:58ch}
+.fila-go{font:700 .7rem/1 var(--cap);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;white-space:nowrap}
+.fila-go::after{content:"";width:34px;height:1px;background:currentColor;transition:width .3s}
+.fila:hover{background:linear-gradient(90deg,rgba(219,165,32,.09),transparent 70%);padding-left:clamp(12px,2.6vw,34px)}
+.fila:hover .med{transform:rotate(-12deg) scale(1.06)}
+.fila:hover strong{background:var(--oro);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fila:hover .fila-go::after{width:60px}
+.mirilla{position:fixed;left:0;top:0;z-index:40;width:230px;aspect-ratio:3/4;border:1px solid var(--gold);padding:6px;background:#000;pointer-events:none;opacity:0;
+  transform:translate(var(--x,0),var(--y,0)) rotate(3deg) scale(.9);transition:opacity .25s,scale .25s}
+.mirilla.on{opacity:1}
+.mirilla img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- trabajos: fotos bajo el foco ---------- */
+.muro{columns:3;column-gap:14px}
+.pieza{position:relative;display:block;width:100%;margin:0 0 14px;padding:0;border:0;background:#000;cursor:zoom-in;break-inside:avoid;overflow:hidden}
+.pieza img{width:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .4s}
+.pieza::before,.pieza::after{content:"";position:absolute;z-index:2;width:22px;height:22px;border:solid var(--gold);opacity:0;transition:opacity .3s,inset .3s}
+.pieza::before{left:16px;top:16px;border-width:1px 0 0 1px}
+.pieza::after{right:16px;bottom:16px;border-width:0 1px 1px 0}
+.pieza:hover::before,.pieza:focus-visible::before{opacity:1;left:9px;top:9px}
+.pieza:hover::after,.pieza:focus-visible::after{opacity:1;right:9px;bottom:9px}
+@media (hover:hover){
+  .pieza img{filter:brightness(.62) saturate(.75)}
+  .pieza span{position:absolute;inset:0;z-index:1;background:radial-gradient(240px 240px at var(--mx,50%) var(--my,50%),transparent 0,rgba(0,0,0,.72) 100%);opacity:0;transition:opacity .3s}
+  .pieza:hover img,.pieza:focus-visible img{filter:none;transform:scale(1.04)}
+  .pieza:hover span{opacity:1}
+}
+.muro--2{columns:2;max-width:820px;margin-inline:auto}
+.muro--1{columns:1;max-width:460px;margin-inline:auto}
+.nota{margin-top:34px;text-align:center;color:var(--mute)}
+.nota a{color:var(--gold-hi)}
+
+/* visor */
+dialog.visor{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100dvh;color:var(--txt)}
+dialog.visor::backdrop{background:rgba(0,0,0,.94)}
+.visor div{display:grid;place-items:center;width:100%;height:100%;padding:60px 16px 70px}
+.visor img{max-width:100%;max-height:100%;width:auto;object-fit:contain;border:1px solid var(--line)}
+.visor p{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:var(--mute);font:700 .72rem/1 var(--cap);letter-spacing:.18em;text-transform:uppercase}
+.visor button{position:absolute;width:48px;height:48px;border:1px solid var(--gold);border-radius:50%;background:rgba(0,0,0,.6);color:var(--gold-hi);cursor:pointer;font:400 1.3rem/1 var(--txtf)}
+.visor button:hover{background:var(--gold);color:#000}
+.visor .x{top:14px;right:14px}.visor .ant{left:14px;top:50%}.visor .sig{right:14px;top:50%}
+
+/* ---------- equipo ---------- */
+.equipo{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.placa{position:relative;padding:34px 20px 28px;text-align:center;border:1px solid var(--line);background:var(--bg);outline:1px solid var(--line);outline-offset:-7px;transition:border-color .3s,outline-color .3s,transform .3s}
+.placa:hover{border-color:var(--gold);outline-color:var(--gold-lo);transform:translateY(-4px)}
+.placa svg{width:18px;height:18px;color:var(--gold);margin:0 auto 14px}
+.placa h3{font:900 2.3rem/1 var(--got)}
+.placa p{margin-top:10px;color:var(--mute)}
+.placa a{display:inline-block;margin-top:14px;color:var(--gold-hi);text-decoration:none;font-size:.92rem}
+.placa a:hover{text-decoration:underline}
+
+/* ---------- proceso ---------- */
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:p}
+.pasos li{position:relative;padding:0 22px 0 0;counter-increment:p}
+.pasos li::before{content:counter(p);display:block;font:900 5.4rem/.9 var(--got);color:transparent;-webkit-text-stroke:1px var(--gold)}
+.pasos li::after{content:"";display:block;position:absolute;left:0;right:0;top:104px;height:1px;background:var(--line)}
+.pasos h3{font:700 .92rem/1.3 var(--cap);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);margin:54px 0 10px}
+.pasos p{color:var(--mute);font-size:.98rem}
+.pasos li i{position:absolute;left:0;top:97px;width:15px;height:15px;color:var(--gold);z-index:1;background:var(--bg)}
+.alt .pasos li i{background:var(--panel)}
+.pasos li i svg{display:block;width:100%;height:100%}
+
+/* ---------- franja solidaria ---------- */
+.franja{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(18px,4vw,44px);padding:clamp(26px,4vw,44px);border:1px solid var(--gold-lo);outline:1px solid var(--line);outline-offset:6px;background:linear-gradient(120deg,rgba(219,165,32,.1),transparent 60%)}
+.franja .med{--m:84px}
+.franja .med svg{width:36%;height:36%;color:var(--gold-hi)}
+.franja h2{font:900 clamp(1.8rem,3.6vw,2.6rem)/1 var(--got);margin:8px 0 10px}
+.franja p{color:#d6d0c2;max-width:62ch}
+
+/* ---------- opiniones ---------- */
+.nota-g{display:flex;align-items:center;justify-content:center;gap:22px;margin-bottom:46px}
+.nota-g strong{font:900 clamp(5rem,13vw,8.4rem)/.8 var(--got)}
+.nota-g span{text-align:left;color:var(--mute)}
+.estrellas{display:block;color:var(--gold);letter-spacing:.2em;font-size:1.3rem;line-height:1.2}
+.voces{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.voces blockquote{padding:30px 26px;border-top:1px solid var(--gold);background:var(--bg);font-size:1.08rem}
+.alt .voces blockquote{background:var(--bg)}
+.voces blockquote::before{content:"\201C";display:block;font:900 4rem/.6 var(--got);color:var(--gold);margin-bottom:8px}
+.voces cite{display:block;margin-top:18px;font:700 .7rem/1 var(--cap);letter-spacing:.18em;text-transform:uppercase;font-style:normal;color:var(--mute)}
+.centro{display:flex;justify-content:center;margin-top:40px}
+
+/* ---------- visítanos ---------- */
+.visita{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(26px,5vw,60px);align-items:stretch}
+.ficha-d li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ficha-d svg{width:20px;height:20px;color:var(--gold);flex:none;margin-top:4px}
+.ficha-d a{text-decoration:none}
+.ficha-d a:hover{color:var(--gold-hi)}
+.ficha-d small{display:block;color:var(--mute);font-size:.86rem}
+.horas{width:100%;border-collapse:collapse;margin-top:26px}
+.horas caption{text-align:left;font:700 .74rem/1 var(--cap);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-bottom:12px}
+.horas th,.horas td{padding:9px 0;border-bottom:1px dashed var(--line);text-align:left;font-weight:400}
+.horas td{text-align:right;color:var(--mute)}
+.horas tr.hoy th,.horas tr.hoy td{color:var(--gold-hi);font-weight:700}
+.horas tr.hoy th::after{content:" · hoy";font:700 .64rem/1 var(--cap);letter-spacing:.16em;text-transform:uppercase}
+.visita .btns{margin-top:28px}
+.mapa{position:relative;min-height:420px;border:1px solid var(--gold-lo);padding:7px;background:#000}
+.mapa iframe{display:block;width:100%;height:100%;min-height:404px;border:0;filter:grayscale(1) invert(.92) contrast(.88) brightness(.95)}
+
+/* ---------- ficha de subpágina ---------- */
+.dos{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,6vw,70px);align-items:start}
+.dos h2{font:900 clamp(2rem,4.4vw,3rem)/1 var(--got);margin:10px 0 18px}
+.dos p+p{margin-top:14px}
+.dos .cap{color:var(--gold)}
+.apuntes{border:1px solid var(--line);outline:1px solid var(--line);outline-offset:-7px;padding:32px 28px;background:var(--bg)}
+.apuntes h3{font:700 .8rem/1 var(--cap);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.apuntes li{position:relative;padding:11px 0 11px 28px;border-bottom:1px dashed var(--line)}
+.apuntes li:last-child{border:0;padding-bottom:0}
+.apuntes li svg{position:absolute;left:0;top:17px;width:14px;height:14px;color:var(--gold)}
+.otros{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.cierre{text-align:center}
+.cierre .h2{margin-bottom:8px}
+.cierre .lead{margin:20px auto 30px}
+.cierre .btns{justify-content:center}
+
+/* ---------- pie ---------- */
+footer{border-top:1px solid var(--line);padding:50px 0 34px;text-align:center;color:var(--mute);font-size:.92rem}
+footer img{width:170px;height:170px;margin:0 auto -8px;mix-blend-mode:screen}
+footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin:18px 0 22px}
+footer nav a{font:700 .7rem/1 var(--cap);letter-spacing:.18em;text-transform:uppercase;text-decoration:none}
+footer nav a:hover{color:var(--gold-hi)}
+
+/* ---------- aparecer ---------- */
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease var(--rd,0s),transform .7s cubic-bezier(.2,.8,.2,1) var(--rd,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- móvil ---------- */
+@media (max-width:900px){
+  .nav{position:absolute;left:0;right:0;top:70px;flex-direction:column;gap:0;background:#080808;border-bottom:1px solid var(--line);padding:6px var(--pad) 16px;display:none}
+  .nav.abre{display:flex}
+  .nav a{padding:16px 0;border-bottom:1px solid var(--line);font-size:.8rem}
+  .menu{display:grid}
+  .muro{columns:2;column-gap:10px}.pieza{margin-bottom:10px}
+  .pasos{grid-template-columns:1fr 1fr;gap:44px 0}
+  .voces{grid-template-columns:1fr}
+  .visita,.dos{grid-template-columns:1fr}
+  .franja{grid-template-columns:1fr;text-align:left}
+  .mirilla{display:none}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .top .wrap{gap:10px}
+  .marca b{font-size:1.4rem}
+  .marca .med{--m:36px}
+  .top .btn--sm{padding:.8em .9em;letter-spacing:.1em}
+  .fila{grid-template-columns:auto 1fr}
+  .fila-go{grid-column:2;margin-top:-6px}
+  .pasos{grid-template-columns:1fr}
+  .nota-g{flex-direction:column;gap:14px}.nota-g span{text-align:center}
+  .titulo{gap:14px}
+  .hero.sub{padding-top:120px}
+  .btns .btn{flex:1 1 100%}
+  .top .btns .btn{flex:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .halo g{animation:none}
+  .js .rv{opacity:1;transform:none;transition:none}
+  *{transition-duration:.01s!important}
+}
